@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-web
+  labels:
+    app: simple-web
+spec:
+# pod를 3개 띄워준다
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simple-web
+  template:
+    metadata:
+      labels:
+        app: simple-web
+    spec:
+    #다음 이미지를 생성하라
+      containers:
+        - name: simple-web
+          image: bitale/simple-web
+          ports:
+            - containerPort: 80 
